@@ -38,7 +38,7 @@ function doLogin() {
                 console.log('Error:', error);
             });
     } else {
-        document.getElementById('error').innerHTML = "<h1 style=color:#1ab188;background-color:red;padding:40px;>Ingrese los datos correctamente</h1>";
+        document.getElementById('error').innerHTML = "<h2>Ingrese los datos correctamente</h2>";
     }
 }
 /**
@@ -167,7 +167,7 @@ function showList(xml) {
         }
         document.getElementById('main').innerHTML = html;
     } else {
-        document.getElementById('main').innerHTML = "<h1 style=color:red;>Este usuario no tiene páginas</h1>";
+        document.getElementById('main').innerHTML = "<h2 style=color:red;>Este usuario no tiene páginas</h2>";
     }
 }
 
@@ -218,7 +218,7 @@ function doNew() {
                 console.log('Error:', error);
             });
     } else {
-        document.getElementById('error').innerHTML = "<h1 style=color:#1ab188;background-color:red;padding:40px;>Ingrese los datos correctamente</h1>";
+        document.getElementById('error').innerHTML = "<h2>Ingrese los datos correctamente</h2>";
     }
 }
 
@@ -236,7 +236,7 @@ function responseNew(response) {
         html += "<h3>" + text.textContent + "</h3>";
         document.getElementById('main').innerHTML = html;
     } else {
-        document.getElementById('error').innerHTML = "<h1 style=color:#1ab188;background-color:red;padding:40px;>Datos erróneos</h1>";
+        document.getElementById('error').innerHTML = "<h2>Datos erróneos</h2>";
     }
 }
 
@@ -266,7 +266,7 @@ function responseView(response) {
     if (response) {
         document.getElementById('main').innerHTML = html;
     } else {
-        document.getElementById('main').innerHTML = "<h1 style=color:red;>Ocurrió un error inesperado</h1>";
+        document.getElementById('main').innerHTML = "<h2 style=color:red;>Ocurrió un error inesperado</h2>";
     }
 }
 
