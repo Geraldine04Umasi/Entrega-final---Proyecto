@@ -7,7 +7,7 @@ function showLogin() {
     let html = `<link rel="stylesheet" type="text/css" href="css/myStyle.css">
       <h1>Login</h1>
       <div class="form">
-       <input placeholder="Usuario..." type='text' id='user' name='user'>
+       <input placeholder="Usuario..." type='text' id='userName' name='userName'>
        <input placeholder="Contraseña..." type='password' id='password' name='password'>
       <br>
        <input type="submit" value="Ingresar" onclick="doLogin()">
@@ -24,7 +24,7 @@ function showLogin() {
  * La respuesta del CGI es procesada por la función loginResponse
  */
 function doLogin() {
-    let name = document.getElementById('user').value;
+    let name = document.getElementById('userName').value;
     let pass = document.getElementById('password').value;
 
     if (name && pass) {
@@ -50,7 +50,7 @@ function doLogin() {
  * indicando que los datos de usuario y contraseña no coinciden.
  */
 function loginResponse(xml) {
-    var list = xml.getElementsByTagName('user')[0];
+    var list = xml.getElementsByTagName('userName')[0];
 
     if (xml.getElementsByTagName('owner')[0]) {
         console.log(list);
@@ -58,7 +58,7 @@ function loginResponse(xml) {
         userKey = xml.getElementsByTagName('owner')[0].textContent;
         showLoggedIn();
     } else {
-        document.getElementById('error').innerHTML = "<h1 style=color:#1ab188;background-color:red;padding:40px;>Datos erróneos</h1>";
+        document.getElementById('error').innerHTML = "<h2>Datos erróneos</h2>";
     }
 }
 /**
@@ -83,9 +83,10 @@ function showCreateAccount() {
     let html = `<link rel="stylesheet" type="text/css" href="css/myStyle.css">
     <h1>Registro</h1>
    <div class="form">
-    <input placeholder="Usuario..." type='text' id='user' name='user'>           <input placeholder="Contraseña..." type='password' id='password' name='password'>
-    <input placeholder="Nombre..." type='text' id='first' name='first'>
-    <input placeholder="Apellido..." type='text' id='last' name='last'>
+    <input placeholder="Usuario..." type='text' id='userName' name='userName'>           
+    <input placeholder="Contraseña..." type='password' id='password' name='password'>
+    <input placeholder="Nombre..." type='text' id='firstName' name='firstName'>
+    <input placeholder="Apellido..." type='text' id='lastName' name='lastName'>
     <input type='submit' value='Registrarse' onclick="doCreateAccount()">
    </div>
    <div class="card" id="error">
@@ -99,10 +100,10 @@ function showCreateAccount() {
  * la respuesta de este CGI será procesada por loginResponse.
  */
 function doCreateAccount() {
-    let user = document.getElementById('user').value;
+    let user = document.getElementById('userName').value;
     let passw = document.getElementById('password').value;
-    let firstN = document.getElementById('first').value;
-    let lastN = document.getElementById('last').value;
+    let firstN = document.getElementById('firstName').value;
+    let lastN = document.getElementById('lastName').value;
 
     if (user && passw && firstN && lastN) {
         var url = "cgi-bin/register.pl?user=" + user + "&password=" + passw + "&firstName=" + firstN + "&lastName=" + lastN;
@@ -115,7 +116,7 @@ function doCreateAccount() {
                 console.log('Error:', error);
             });
     } else {
-        document.getElementById('error').innerHTML = "<h1 style=color:#1ab188;background-color:red;padding:40px;>Ingrese los datos correctamente</h1>";
+        document.getElementById('error').innerHTML = "<h2>Ingrese los datos correctamente</h2>";
     }
 }
 
